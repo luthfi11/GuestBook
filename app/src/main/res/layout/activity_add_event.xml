@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarAddEvent"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/colorPrimary"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_event"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/toolbarText" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etEventName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:textSize="14sp"
+            android:inputType="text"
+            android:drawableStart="@drawable/ic_event"
+            android:drawablePadding="10dp"
+            android:background="@android:color/white"
+            android:hint="@string/event_name"
+            tools:ignore="Autofill" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/colorMuted"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etEventLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:textSize="14sp"
+            android:inputType="text"
+            android:drawableStart="@drawable/ic_location"
+            android:drawablePadding="10dp"
+            android:background="@android:color/white"
+            android:hint="@string/event_location"
+            tools:ignore="Autofill" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/colorMuted"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etEventDate"
+                android:layout_width="0dip"
+                android:layout_weight="0.8"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_date"
+                android:drawablePadding="10dp"
+                android:background="@android:color/white"
+                android:editable="false"
+                android:padding="20dp"
+                android:textSize="15sp"
+                android:hint="@string/event_date"
+                tools:ignore="Autofill,Deprecated" />
+
+            <Button
+                android:id="@+id/btnSetDate"
+                android:layout_width="0dip"
+                android:layout_weight="0.2"
+                android:layout_height="match_parent"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:text="@string/set"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/colorMuted"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etEventDesc"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:padding="20dp"
+            android:textSize="14sp"
+            android:maxLength="15"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:drawableStart="@drawable/ic_note"
+            android:drawablePadding="10dp"
+            android:background="@android:color/white"
+            android:hint="@string/event_description"
+            tools:ignore="Autofill" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/colorMuted"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSaveEvent"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_button"
+            android:text="@string/save"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+</ScrollView>
