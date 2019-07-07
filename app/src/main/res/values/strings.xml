@@ -22,6 +22,16 @@
     <string name="loading">Loading …</string>
     <string name="email_validate">Please fill your email correctly</string>
     <string name="event_location">Location</string>
+    <string name="edit">Edit</string>
+    <string name="search_guest">Search Guest</string>
+    <string name="updating">Updating …</string>
+    <string name="delete">Delete</string>
+    <string name="empty_guest">There are no guests found at this event</string>
+    <string name="empty_event">There is no events found</string>
+    <string name="delete_event_msg">Are your sure to delete this event ? All guest data will be lost.</string>
+    <string name="edit_event">Edit Event</string>
+    <string name="newest_event">Newest Event</string>
+    <string name="see_all">See All</string>
 
     <array name="example">
         <item>Example</item>

@@ -8,4 +8,5 @@ interface EventDetailView {
     fun hideLoading()
     fun showEventDetail(event: Event?)
     fun showEventGuest(guest: List<Guest?>)
+    fun showDeleteAlert()
 }

@@ -18,9 +18,9 @@
             app:layout_scrollFlags="scroll|enterAlways|snap">
 
             <TextView
-                android:id="@+id/tvExplore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="@string/title_home"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/toolbarText" />
@@ -35,15 +35,60 @@
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rvHome"
-            android:paddingTop="12dp"
+            android:layout_height="match_parent"
             android:paddingBottom="60dp"
-            android:clipToPadding="false"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            tools:listitem="@layout/item_guest" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/newest_event"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="16dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/colorMuted"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"/>
+
+            <TextView
+                android:id="@+id/tvLatestEvent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Event Name"
+                android:textSize="16sp"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvHome"
+                android:paddingTop="10dp"
+                android:clipToPadding="false"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                tools:listitem="@layout/item_guest" />
+
+            <Button
+                android:id="@+id/btnSeeAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:layout_marginTop="12dp"
+                android:layout_gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:text="@string/see_all"/>
+
+        </LinearLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

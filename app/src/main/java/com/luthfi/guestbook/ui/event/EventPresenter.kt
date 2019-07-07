@@ -14,6 +14,7 @@ class EventPresenter(private val view: EventView, private val ctx: Context?) {
         ctx?.database?.use {
             val data = select(Event.TABlE_EVENT).parseList(classParser<Event>())
             listEvent.addAll(data)
+            listEvent.sortByDescending { it?.id }
             view.showEventList(listEvent)
             view.hideLoading()
         }

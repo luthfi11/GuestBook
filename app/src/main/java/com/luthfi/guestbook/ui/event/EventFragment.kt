@@ -1,15 +1,16 @@
 package com.luthfi.guestbook.ui.event
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import com.luthfi.guestbook.R
 import com.luthfi.guestbook.data.model.Event
 import com.luthfi.guestbook.ui.addevent.AddEventActivity
+import com.wysiwyg.temanolga.utilities.gone
+import com.wysiwyg.temanolga.utilities.visible
 import kotlinx.android.synthetic.main.fragment_event.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.onRefresh
@@ -33,6 +34,7 @@ class EventFragment : Fragment(), EventView {
         this.event.clear()
         this.event.addAll(event)
         adapter.notifyDataSetChanged()
+        onEmpty(event)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -62,6 +64,16 @@ class EventFragment : Fragment(), EventView {
     private fun onAction() {
         srlEvent.onRefresh { presenter.getEventList() }
         fabAdd.onClick { startActivity<AddEventActivity>() }
+    }
+
+    private fun onEmpty(event: List<Event?>) {
+        if (event.isEmpty()) {
+            imgEmpty.visible()
+            tvEmpty.visible()
+        } else {
+            imgEmpty.gone()
+            tvEmpty.gone()
+        }
     }
 
 }

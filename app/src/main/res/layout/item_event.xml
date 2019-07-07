@@ -5,32 +5,62 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="6dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
     android:background="@android:color/white"
+    app:cardCornerRadius="6dp"
     app:cardBackgroundColor="@android:color/white"
-    app:cardElevation="4dp">
+    app:cardElevation="1dp">
 
     <RelativeLayout
         android:id="@+id/rlv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/item_background_grey"
-        android:padding="16dp">
+        android:paddingEnd="16dp"
+        android:paddingStart="0dp"
+        tools:layout_height="70dp">
+
+        <TextView
+            android:id="@+id/tvGuestCount"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:drawableBottom="@drawable/ic_person_white"
+            android:textSize="28sp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:padding="8dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/colorPrimaryDark"
+            tools:text="10" />
 
         <TextView
             android:id="@+id/tvEventName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/img"
+            android:layout_toEndOf="@id/tvGuestCount"
+            android:layout_marginTop="6dp"
             android:textSize="16sp"
             android:textColor="@android:color/black"
             tools:text="EVENT NAME" />
 
         <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tvGuestCount"
+            android:layout_below="@+id/tvEventName"
+            tools:text="EVENT LOCATION" />
+
+        <TextView
             android:id="@+id/tvEventDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvEventName"
+            android:layout_toEndOf="@id/tvGuestCount"
+            android:layout_below="@+id/tvLocation"
+            android:layout_marginTop="-3dp"
             tools:text="EVENT DATE" />
 
         <ImageView

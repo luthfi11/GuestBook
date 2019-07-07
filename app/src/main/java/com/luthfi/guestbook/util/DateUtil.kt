@@ -23,7 +23,7 @@ object DateUtil {
             c.timeInMillis = 0
             c.set(years, monthOfYear, dayOfMonth, 0, 0, 0)
             val chosenDate = c.time
-            val dateFormat = SimpleDateFormat("dd/MM/yyyy", locale)
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
             val date = dateFormat.format(chosenDate)
             editText.setText(date)
 
@@ -34,8 +34,8 @@ object DateUtil {
     }
 
     fun dateFormat(date: String?, pattern: String): String {
-        val format = SimpleDateFormat("dd/MM/yyyy", locale)
-        val sdf = SimpleDateFormat(pattern, locale)
+        val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val sdf = SimpleDateFormat(pattern, Locale.getDefault())
 
         return sdf.format(format.parse(date))
     }

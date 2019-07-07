@@ -11,8 +11,8 @@ data class Guest(
     val phone: String? = null,
     val email: String? = null,
     val guestNote: String? = null,
-    val timeStamp: Long? = null,
-    val eventId: String? = null
+    val timeStamp: String? = null,
+    val eventId: Int? = null
 ) : Parcelable {
     companion object {
         const val TABLE_GUEST: String = "TABLE_GUEST"

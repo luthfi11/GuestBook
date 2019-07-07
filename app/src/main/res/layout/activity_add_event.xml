@@ -17,24 +17,18 @@
             android:layout_height="48dp"
             android:background="@color/colorPrimary"
             android:theme="@style/AppTheme.AppBarOverlay"
-            app:layout_scrollFlags="scroll|enterAlways|snap">
-
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/add_event"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/toolbarText" />
-
-        </androidx.appcompat.widget.Toolbar>
+            app:contentInsetLeft="@dimen/toolbarText"
+            app:titleTextColor="@android:color/white"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
+            app:title="@string/add_event"
+            app:layout_scrollFlags="scroll|enterAlways|snap"/>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etEventName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:textSize="14sp"
+            android:textSize="15sp"
             android:inputType="text"
             android:drawableStart="@drawable/ic_event"
             android:drawablePadding="10dp"
@@ -52,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:textSize="14sp"
+            android:textSize="15sp"
             android:inputType="text"
             android:drawableStart="@drawable/ic_location"
             android:drawablePadding="10dp"
@@ -106,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:padding="20dp"
-            android:textSize="14sp"
+            android:textSize="15sp"
             android:maxLength="15"
             android:inputType="textMultiLine"
             android:maxLines="10"
