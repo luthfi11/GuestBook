@@ -1,8 +1,8 @@
-package com.luthfi.guestbook.ui.addguest
+package com.luthfi.guestbook.ui.editguest
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.luthfi.guestbook.R
 import com.luthfi.guestbook.data.model.Guest
 import com.luthfi.guestbook.util.LoadingDialog
@@ -10,19 +10,32 @@ import com.luthfi.guestbook.util.ValidateUtil.emailValidate
 import com.luthfi.guestbook.util.ValidateUtil.etToString
 import com.luthfi.guestbook.util.ValidateUtil.validate
 import kotlinx.android.synthetic.main.activity_add_guest.*
+import org.jetbrains.anko.appcompat.v7.titleResource
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.toast
 
-class AddGuestActivity : AppCompatActivity(), AddGuestView {
+class EditGuestActivity : AppCompatActivity(), EditGuestView {
 
-    private lateinit var presenter: AddGuestPresenter
-    private var eventId: Int = 0
+    private lateinit var presenter: EditGuestPresenter
+    private var guest: Guest? = null
+
+    override fun showGuestData(guest: Guest?) {
+        etGuestName.setText(guest?.name)
+        etAddress.setText(guest?.address)
+        etEmail.setText(guest?.email)
+        etPhone.setText(guest?.phone)
+        etGuestNote.setText(guest?.guestNote)
+
+        this.guest = guest
+    }
 
     override fun showLoading() {
-        LoadingDialog.showLoading(this, R.string.loading)
+        LoadingDialog.showLoading(this, R.string.updating)
     }
 
     override fun hideLoading() {
         LoadingDialog.hideLoading()
+        toast(R.string.guest_updated)
         finish()
     }
 
@@ -31,13 +44,16 @@ class AddGuestActivity : AppCompatActivity(), AddGuestView {
         setContentView(R.layout.activity_add_guest)
         setSupportActionBar(toolbarAddGuest)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbarAddGuest?.titleResource = R.string.edit_guest
 
-        presenter = AddGuestPresenter(this, this)
-        eventId = intent.getIntExtra("eventId", 0)
-        btnSaveGuest.onClick { addGuest() }
+        val guest = intent?.getParcelableExtra<Guest>("guest")
+        presenter = EditGuestPresenter(this, this)
+        presenter.getGuestData(guest)
+
+        btnSaveGuest.onClick { editGuest() }
     }
 
-    private fun addGuest() {
+    private fun editGuest() {
         if ((validate(etAddress, getString(R.string.general_validate))) or
             (validate(etPhone, getString(R.string.general_validate))) or
             (validate(etEmail, getString(R.string.general_validate))) or
@@ -45,15 +61,18 @@ class AddGuestActivity : AppCompatActivity(), AddGuestView {
         ) {
 
             val guest = Guest(
+                id = guest?.id,
                 name = etToString(etGuestName),
                 email = etToString(etEmail),
                 phone = etToString(etPhone),
                 address = etToString(etAddress),
-                guestNote = etToString(etGuestNote)
+                guestNote = etToString(etGuestNote),
+                timeStamp = guest?.timeStamp,
+                eventId = guest?.eventId
             )
 
             emailValidate(etEmail, getString(R.string.email_validate)) {
-                presenter.addGuest(guest, eventId)
+                presenter.updateGuest(guest)
             }
         }
     }

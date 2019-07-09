@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.luthfi.guestbook.R
 import com.luthfi.guestbook.data.model.Event
 import com.luthfi.guestbook.data.model.Guest
+import com.luthfi.guestbook.ui.event.EventAdapter
 import com.luthfi.guestbook.ui.eventdetail.EventDetailActivity
+import com.luthfi.guestbook.ui.eventdetail.GuestAdapter
+import com.luthfi.guestbook.util.DateUtil.dateFormat
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.onRefresh
@@ -19,7 +22,9 @@ class HomeFragment : Fragment(), HomeView {
 
     private lateinit var presenter: HomePresenter
     private lateinit var adapter: GuestAdapter
+    private lateinit var eventAdapter: EventAdapter
     private val guest = mutableListOf<Guest?>()
+    private val event = mutableListOf<Event?>()
     private var id: Int? = null
 
     override fun showLoading() {
@@ -33,12 +38,19 @@ class HomeFragment : Fragment(), HomeView {
     override fun showLatestEvent(event: Event?) {
         this.id = event?.id
         tvLatestEvent.text = event?.eventName
+        tvLatestEventDate.text = dateFormat(event?.eventDate, "dd MMMM yyyy")
     }
 
     override fun showGuestData(guest: List<Guest?>) {
         this.guest.clear()
         this.guest.addAll(guest)
         adapter.notifyDataSetChanged()
+    }
+
+    override fun showMostAttended(event: List<Event?>) {
+        this.event.clear()
+        this.event.addAll(event)
+        eventAdapter.notifyDataSetChanged()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -52,17 +64,24 @@ class HomeFragment : Fragment(), HomeView {
         presenter = HomePresenter(this, context)
         presenter.getLatestEvent()
         presenter.getGuestData(id)
+        presenter.getMostAttended()
     }
 
     private fun setRecycler() {
         adapter = GuestAdapter(guest)
-        rvHome.setHasFixedSize(true)
-        rvHome.layoutManager = LinearLayoutManager(context)
-        rvHome.adapter = adapter
+        rvLatestGuest.setHasFixedSize(true)
+        rvLatestGuest.layoutManager = LinearLayoutManager(context)
+        rvLatestGuest.adapter = adapter
+
+        eventAdapter = EventAdapter(event)
+        rvMostAttended.setHasFixedSize(true)
+        rvMostAttended.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvMostAttended.adapter = eventAdapter
     }
 
     private fun onAction() {
         srlHome.onRefresh { presenter.getGuestData(id) }
         btnSeeAll.onClick { startActivity<EventDetailActivity>("eventId" to id) }
+
     }
 }

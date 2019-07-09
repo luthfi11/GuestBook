@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.luthfi.guestbook.R
 import com.luthfi.guestbook.data.model.Guest
-import com.luthfi.guestbook.ui.home.GuestAdapter
 import kotlinx.android.synthetic.main.fragment_export.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class ExportFragment : Fragment(), ExportView {
 
     private lateinit var presenter: ExportPresenter
-    private lateinit var adapter: GuestAdapter
+    private lateinit var adapter: ExportAdapter
     private val guest = mutableListOf<Guest?>()
 
     override fun showLoading() {
@@ -47,10 +47,12 @@ class ExportFragment : Fragment(), ExportView {
         setRecycler()
         presenter = ExportPresenter(this, context)
         presenter.getEventList()
+
+        btnExport.onClick { presenter.exportToCSV("HAHA", guest) }
     }
 
     private fun setRecycler() {
-        adapter = GuestAdapter(guest)
+        adapter = ExportAdapter(guest)
         rvGuest.setHasFixedSize(true)
         rvGuest.layoutManager = LinearLayoutManager(context)
         rvGuest.adapter = adapter
@@ -63,5 +65,4 @@ class ExportFragment : Fragment(), ExportView {
             presenter.getGuestList(eid[position])
         }
     }
-
 }

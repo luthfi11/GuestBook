@@ -2,14 +2,11 @@ package com.luthfi.guestbook.util
 
 import android.app.DatePickerDialog
 import android.content.Context
-import android.text.format.DateUtils
 import android.widget.EditText
 import java.text.SimpleDateFormat
 import java.util.*
 
 object DateUtil {
-
-    val locale = Locale("in", "ID")
 
     fun datePicker(editText: EditText, context: Context) {
         val c = Calendar.getInstance()
@@ -40,11 +37,8 @@ object DateUtil {
         return sdf.format(format.parse(date))
     }
 
-    fun dayAgo(millis: Long): String {
-        return DateUtils.getRelativeTimeSpanString(
-            millis,
-            System.currentTimeMillis(),
-            DateUtils.DAY_IN_MILLIS
-        ).toString()
+    fun timeFormat(format: String, millis: Long?): String {
+        val sdf = SimpleDateFormat(format, Locale.getDefault())
+        return sdf.format(Date(millis!!))
     }
 }

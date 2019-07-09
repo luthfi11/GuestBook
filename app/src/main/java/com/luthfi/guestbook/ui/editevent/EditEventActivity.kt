@@ -11,6 +11,7 @@ import com.luthfi.guestbook.util.ValidateUtil
 import kotlinx.android.synthetic.main.activity_add_event.*
 import org.jetbrains.anko.appcompat.v7.titleResource
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.toast
 
 class EditEventActivity : AppCompatActivity(), EditEventView {
 
@@ -33,6 +34,7 @@ class EditEventActivity : AppCompatActivity(), EditEventView {
 
     override fun hideLoading() {
         LoadingDialog.hideLoading()
+        toast(R.string.event_updated)
         finish()
     }
 

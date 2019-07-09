@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="70dp"
     android:layout_marginBottom="6dp"
     android:layout_marginStart="12dp"
     android:layout_marginEnd="12dp"
@@ -15,7 +15,7 @@
     <RelativeLayout
         android:id="@+id/rlv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/item_background_grey"
         android:paddingEnd="16dp"
@@ -41,7 +41,9 @@
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/img"
             android:layout_toEndOf="@id/tvGuestCount"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textSize="16sp"
             android:textColor="@android:color/black"
             tools:text="EVENT NAME" />
@@ -52,6 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/tvGuestCount"
             android:layout_below="@+id/tvEventName"
+            android:maxLines="1"
+            android:ellipsize="end"
             tools:text="EVENT LOCATION" />
 
         <TextView
@@ -60,7 +64,9 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/tvGuestCount"
             android:layout_below="@+id/tvLocation"
-            android:layout_marginTop="-3dp"
+            android:layout_marginTop="-2dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             tools:text="EVENT DATE" />
 
         <ImageView

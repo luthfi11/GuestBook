@@ -1,6 +1,7 @@
 package com.luthfi.guestbook.ui.addevent
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.luthfi.guestbook.R
 import com.luthfi.guestbook.data.model.Event
@@ -27,9 +28,10 @@ class AddEventActivity : AppCompatActivity(), AddEventView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_event)
+        setSupportActionBar(toolbarAddEvent)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         presenter = AddEventPresenter(this, this)
-
         onAction()
     }
 
@@ -51,5 +53,10 @@ class AddEventActivity : AppCompatActivity(), AddEventView {
             )
             presenter.addEvent(event)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == android.R.id.home) finish()
+        return super.onOptionsItemSelected(item)
     }
 }

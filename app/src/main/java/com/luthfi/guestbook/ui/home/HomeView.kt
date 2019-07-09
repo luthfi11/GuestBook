@@ -8,4 +8,5 @@ interface HomeView {
     fun hideLoading()
     fun showLatestEvent(event: Event?)
     fun showGuestData(guest: List<Guest?>)
+    fun showMostAttended(event: List<Event?>)
 }

@@ -19,4 +19,14 @@ class EventPresenter(private val view: EventView, private val ctx: Context?) {
             view.hideLoading()
         }
     }
+
+    fun searchEvent(name: String?) {
+        val listEvent = mutableListOf<Event?>()
+        ctx?.database?.use {
+            val data = select(Event.TABlE_EVENT).parseList(classParser<Event>())
+            listEvent.addAll(data)
+            listEvent.sortByDescending { it?.id }
+            view.showEventList(listEvent.filter { it?.eventName?.contains(name!!, true)!! })
+        }
+    }
 }

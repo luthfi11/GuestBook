@@ -7,14 +7,14 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/appBar"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/appBar"
             app:layout_scrollFlags="scroll|enterAlways|snap">
 
             <TextView
@@ -26,6 +26,15 @@
                 android:textSize="@dimen/toolbarText" />
 
         </androidx.appcompat.widget.Toolbar>
+
+        <SearchView
+            android:id="@+id/svEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:iconifiedByDefault="false"
+            android:queryBackground="@color/colorPrimaryDark"
+            android:queryHint="@string/search_event"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -41,7 +50,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/rvEvent"
                 android:paddingTop="12dp"
                 android:paddingBottom="60dp"
@@ -55,6 +64,7 @@
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
+                android:contentDescription="@string/app_name"
                 android:tint="@color/colorMuted"
                 android:visibility="gone"
                 android:src="@drawable/ic_empty" />

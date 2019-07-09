@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.luthfi.guestbook.R
@@ -11,19 +12,15 @@ import com.luthfi.guestbook.data.model.Event
 import com.luthfi.guestbook.data.model.Guest
 import com.luthfi.guestbook.ui.addguest.AddGuestActivity
 import com.luthfi.guestbook.ui.editevent.EditEventActivity
-import com.luthfi.guestbook.ui.home.GuestAdapter
 import com.luthfi.guestbook.util.DateUtil
 import com.wysiwyg.temanolga.utilities.gone
 import com.wysiwyg.temanolga.utilities.visible
 import kotlinx.android.synthetic.main.activity_event_detail.*
-import org.jetbrains.anko.alert
-import org.jetbrains.anko.noButton
+import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
-import org.jetbrains.anko.yesButton
 
-class EventDetailActivity : AppCompatActivity(), EventDetailView, android.widget.SearchView.OnQueryTextListener {
+class EventDetailActivity : AppCompatActivity(), EventDetailView, SearchView.OnQueryTextListener {
 
     private lateinit var presenter: EventDetailPresenter
     private lateinit var adapter: GuestAdapter
@@ -52,6 +49,7 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView, android.widget
         this.guest.clear()
         this.guest.addAll(guest)
         adapter.notifyDataSetChanged()
+        tvGuestCount.text = String.format(getString(R.string.showing_count), guest.size)
         onEmpty(guest)
     }
 
@@ -60,6 +58,7 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView, android.widget
             messageResource = R.string.delete_event_msg
             yesButton {
                 presenter.deleteEvent()
+                toast(R.string.event_deleted)
                 finish()
             }
             noButton { it.dismiss() }
@@ -67,13 +66,13 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView, android.widget
         }.show()
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        presenter.searchGuest(query)
+    override fun onQueryTextChange(newText: String?): Boolean {
+        presenter.searchGuest(newText)
         return true
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean {
-        presenter.searchGuest(newText)
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        presenter.searchGuest(query)
         return true
     }
 
@@ -98,8 +97,8 @@ class EventDetailActivity : AppCompatActivity(), EventDetailView, android.widget
 
     private fun onAction(eventId: Int) {
         srlEventDetail.onRefresh { presenter.getEventGuest() }
-        svGuest.setOnQueryTextListener(this)
         fabAddGuest.onClick { startActivity<AddGuestActivity>("eventId" to eventId) }
+        svGuest.setOnQueryTextListener(this)
     }
 
     private fun setRecycler() {

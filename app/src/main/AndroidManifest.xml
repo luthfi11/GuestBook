@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.editevent.EditEventActivity"></activity>
+        <activity android:name=".ui.editguest.EditGuestActivity"></activity>
+        <activity android:name=".ui.guestdetail.GuestDetailActivity" />
+        <activity android:name=".ui.editevent.EditEventActivity" />
         <activity android:name=".ui.eventdetail.EventDetailActivity" />
         <activity android:name=".ui.addguest.AddGuestActivity" />
         <activity android:name=".ui.addevent.AddEventActivity" />

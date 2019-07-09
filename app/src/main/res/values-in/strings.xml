@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Guest Book</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_event">Acara</string>
+    <string name="title_export">Ekspor</string>
+    <string name="export_to_csv">Ekspor ke CSV</string>
+    <string name="select_event">Pilih Acara :</string>
+    <string name="event_name">Nama Acara</string>
+    <string name="event_description">Deskripsi</string>
+    <string name="event_date">Tanggal</string>
+    <string name="add_event">Tambah Acara</string>
+    <string name="save">Simpan</string>
+    <string name="general_validate">Mohon isi kotak ini</string>
+    <string name="set">Atur</string>
+    <string name="adding_event">Menambahkan Acara …</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="guest_check_in">Tamu Check In</string>
+    <string name="email">Email</string>
+    <string name="guest_note">Catatan Tamu</string>
+    <string name="phone_number">Nomor Telepon</string>
+    <string name="address">Alamat</string>
+    <string name="loading">Memuat …</string>
+    <string name="email_validate">Mohon isi alamat email anda dengan benar</string>
+    <string name="event_location">Lokasi</string>
+    <string name="edit">Ubah</string>
+    <string name="search_guest">Cari Tamu</string>
+    <string name="updating">Memperbarui …</string>
+    <string name="delete">Hapus</string>
+    <string name="empty_guest">Tidak ada tamu ditemukan dalam acara ini</string>
+    <string name="empty_event">Tidak ada acara ditemukan</string>
+    <string name="delete_event_msg">Apakah anda yakin ingin menghapus acara ini? Semua data tamu akan hilang.</string>
+    <string name="edit_event">Ubah Acara</string>
+    <string name="newest_event">Acara Terbaru</string>
+    <string name="see_all">Lihat Semua</string>
+    <string name="showing_count">Menampilkan total %1d tamu</string>
+    <string name="most_attended">Acara Paling Banyak Didatangi</string>
+    <string name="search_event">Cari Acara</string>
+    <string name="no">Tidak</string>
+    <string name="name">Nama</string>
+    <string name="guest_detail">Detil Tamu</string>
+    <string name="time_of_entry">Waktu Masuk</string>
+    <string name="event_deleted">Acara Dihapus</string>
+    <string name="delete_guest">Hapus data tamu ini ?</string>
+    <string name="guest_deleted">Tamu Dihapus</string>
+    <string name="edit_guest">Ubah Tamu</string>
+    <string name="guest_updated">Tamu Diperbarui</string>
+    <string name="event_updated">Acara Diperbarui</string>
+
+    <array name="example">
+        <item>Example</item>
+    </array>
+</resources>

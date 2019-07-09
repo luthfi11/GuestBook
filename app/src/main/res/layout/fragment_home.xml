@@ -14,8 +14,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|enterAlways|snap">
+            android:layout_height="match_parent" >
 
             <TextView
                 android:layout_width="match_parent"
@@ -35,60 +34,98 @@
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="60dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/newest_event"
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="16dp"/>
+                android:layout_height="match_parent"
+                android:paddingBottom="50dp"
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.3dp"
-                android:background="@color/colorMuted"
-                android:layout_marginTop="6dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="14dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/newest_event"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="16dp"/>
 
-            <TextView
-                android:id="@+id/tvLatestEvent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Event Name"
-                android:textSize="16sp"
-                android:layout_marginTop="6dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:background="@color/colorMuted"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14dp"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rvHome"
-                android:paddingTop="10dp"
-                android:clipToPadding="false"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-                tools:listitem="@layout/item_guest" />
+                <TextView
+                    android:id="@+id/tvLatestEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Event Name"
+                    android:textSize="16sp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"/>
 
-            <Button
-                android:id="@+id/btnSeeAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:layout_marginTop="12dp"
-                android:layout_gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp"
-                android:text="@string/see_all"/>
+                <TextView
+                    android:id="@+id/tvLatestEventDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Event Data"
+                    android:textSize="14sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"/>
 
-        </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rvLatestGuest"
+                    android:paddingTop="10dp"
+                    android:clipToPadding="false"
+                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                    tools:listitem="@layout/item_guest"
+                    tools:itemCount="5"/>
+
+                <Button
+                    android:id="@+id/btnSeeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/item_background_grey"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/see_all"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/most_attended"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="16dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rvMostAttended"
+                    android:paddingTop="10dp"
+                    android:clipToPadding="false"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/item_event" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

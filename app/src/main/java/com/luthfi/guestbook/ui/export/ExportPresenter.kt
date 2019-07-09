@@ -8,6 +8,7 @@ import org.jetbrains.anko.db.IntParser
 import org.jetbrains.anko.db.StringParser
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
+import java.io.FileWriter
 
 class ExportPresenter(private val view: ExportView, private val ctx: Context?) {
 
@@ -29,7 +30,17 @@ class ExportPresenter(private val view: ExportView, private val ctx: Context?) {
         }
     }
 
-    fun exportToCSV() {
+    fun exportToCSV(eventName: String, list: List<Guest?>) {
+        val fileWriter = FileWriter("$eventName.csv")
+        fileWriter.append("No, Name, Address, Email, Phone, Guest Note")
+        list.forEach {
+            fileWriter.append(it?.name)
+            fileWriter.append(it?.address)
+            fileWriter.append(it?.email)
+            fileWriter.append(it?.phone)
+            fileWriter.append(it?.guestNote)
+        }
 
+        fileWriter.close()
     }
 }

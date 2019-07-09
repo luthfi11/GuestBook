@@ -20,7 +20,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="address">Address</string>
     <string name="loading">Loading …</string>
-    <string name="email_validate">Please fill your email correctly</string>
+    <string name="email_validate">Please fill your email address correctly</string>
     <string name="event_location">Location</string>
     <string name="edit">Edit</string>
     <string name="search_guest">Search Guest</string>
@@ -32,6 +32,19 @@
     <string name="edit_event">Edit Event</string>
     <string name="newest_event">Newest Event</string>
     <string name="see_all">See All</string>
+    <string name="showing_count">Showing total %1d guests</string>
+    <string name="most_attended">Most Attended Event</string>
+    <string name="search_event">Search Event</string>
+    <string name="no">No</string>
+    <string name="name">Name</string>
+    <string name="guest_detail">Guest Detail</string>
+    <string name="time_of_entry">Time Of Entry</string>
+    <string name="event_deleted">Event Deleted</string>
+    <string name="delete_guest">Delete this guest data ?</string>
+    <string name="guest_deleted">Guest Deleted</string>
+    <string name="edit_guest">Edit Guest</string>
+    <string name="guest_updated">Guest Updated</string>
+    <string name="event_updated">Event Updated</string>
 
     <array name="example">
         <item>Example</item>
