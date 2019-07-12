@@ -29,6 +29,11 @@ class HomePresenter(private val view: HomeView, private val ctx: Context?) {
                 listGuest.sortByDescending { it?.timeStamp }
                 view.showGuestData(listGuest)
                 view.hideLoading()
+
+                if (id != null) {
+                    if (listGuest.isEmpty()) view.emptyGuest()
+                } else view.emptyNewestEvent()
+
             } catch (ex: Exception) {
                 ex.printStackTrace()
             }
@@ -37,26 +42,26 @@ class HomePresenter(private val view: HomeView, private val ctx: Context?) {
 
     fun getMostAttended() {
         val query =
-            "SELECT ${Guest.EVENT_ID}, COUNT(${Guest.EVENT_ID}) FROM ${Guest.TABLE_GUEST} GROUP BY ${Guest.EVENT_ID} ORDER BY COUNT(${Guest.EVENT_ID}) DESC LIMIT 3"
-        val list = mutableListOf<Int>()
+            "SELECT * FROM ${Event.TABlE_EVENT} INNER JOIN ${Guest.TABLE_GUEST} " +
+                    "ON ${Guest.TABLE_GUEST}.${Guest.EVENT_ID} = ${Event.TABlE_EVENT}.${Event.ID} " +
+                    "GROUP BY ${Event.TABlE_EVENT}.${Event.ID} ORDER BY COUNT(*) DESC LIMIT 3"
+        val list = mutableListOf<Event?>()
         ctx?.database?.use {
             val data = rawQuery(query, null)
             while (data.moveToNext()) {
-                val id = data.getInt(0)
-                list.add(id)
+                list.add(
+                    Event(
+                        data.getInt(0),
+                        data.getString(1),
+                        data.getString(2),
+                        data.getString(3),
+                        data.getString(4)
+                    )
+                )
             }
+            view.showMostAttended(list)
+            if (list.isEmpty()) view.emptyMostAttended()
             data.close()
-        }
-
-        val listEvent = mutableListOf<Event?>()
-        ctx?.database?.use {
-            try {
-                val data = select(Event.TABlE_EVENT).parseList(classParser<Event>())
-                listEvent.addAll(data)
-                view.showMostAttended(listEvent)
-            } finally {
-
-            }
         }
     }
 }

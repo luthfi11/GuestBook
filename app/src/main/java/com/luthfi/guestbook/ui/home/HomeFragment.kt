@@ -13,6 +13,8 @@ import com.luthfi.guestbook.ui.event.EventAdapter
 import com.luthfi.guestbook.ui.eventdetail.EventDetailActivity
 import com.luthfi.guestbook.ui.eventdetail.GuestAdapter
 import com.luthfi.guestbook.util.DateUtil.dateFormat
+import com.wysiwyg.temanolga.utilities.gone
+import com.wysiwyg.temanolga.utilities.visible
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.onRefresh
@@ -53,6 +55,23 @@ class HomeFragment : Fragment(), HomeView {
         eventAdapter.notifyDataSetChanged()
     }
 
+    override fun emptyNewestEvent() {
+        tvLatestEvent.gone()
+        tvLatestEventDate.gone()
+        tvEmptyAttended.gone()
+        btnSeeAll.gone()
+        tvEmptyNewest.visible()
+    }
+
+    override fun emptyMostAttended() {
+        tvEmptyAttended.visible()
+    }
+
+    override fun emptyGuest() {
+        btnSeeAll.gone()
+        tvEmptyGuest.visible()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -75,13 +94,12 @@ class HomeFragment : Fragment(), HomeView {
 
         eventAdapter = EventAdapter(event)
         rvMostAttended.setHasFixedSize(true)
-        rvMostAttended.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvMostAttended.layoutManager = LinearLayoutManager(context)
         rvMostAttended.adapter = eventAdapter
     }
 
     private fun onAction() {
         srlHome.onRefresh { presenter.getGuestData(id) }
         btnSeeAll.onClick { startActivity<EventDetailActivity>("eventId" to id) }
-
     }
 }

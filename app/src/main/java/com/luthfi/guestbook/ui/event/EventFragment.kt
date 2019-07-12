@@ -1,7 +1,6 @@
 package com.luthfi.guestbook.ui.event
 
 import android.os.Bundle
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,8 +24,7 @@ class EventFragment : Fragment(), EventView, SearchView.OnQueryTextListener {
     private val event = mutableListOf<Event?>()
 
     override fun showLoading() {
-        svEvent.setQuery("", false)
-        svEvent.clearFocus()
+        clearSv()
         srlEvent.isRefreshing = true
     }
 
@@ -66,6 +64,10 @@ class EventFragment : Fragment(), EventView, SearchView.OnQueryTextListener {
     override fun onResume() {
         super.onResume()
         presenter.getEventList()
+    }
+
+    private fun clearSv() {
+        svEvent.setQuery("", false)
         svEvent.clearFocus()
     }
 

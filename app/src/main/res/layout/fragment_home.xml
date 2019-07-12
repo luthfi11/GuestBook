@@ -101,6 +101,24 @@
                     android:text="@string/see_all"/>
 
                 <TextView
+                    android:id="@+id/tvEmptyNewest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="gone"
+                    android:text="@string/empty_event"/>
+
+                <TextView
+                    android:id="@+id/tvEmptyGuest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="gone"
+                    android:text="@string/empty_guest"/>
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/most_attended"
@@ -122,6 +140,15 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:orientation="horizontal"
                     tools:listitem="@layout/item_event" />
+
+                <TextView
+                    android:id="@+id/tvEmptyAttended"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="gone"
+                    android:text="@string/empty_event"/>
 
             </LinearLayout>
 

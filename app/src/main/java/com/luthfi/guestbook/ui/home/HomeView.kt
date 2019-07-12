@@ -9,4 +9,7 @@ interface HomeView {
     fun showLatestEvent(event: Event?)
     fun showGuestData(guest: List<Guest?>)
     fun showMostAttended(event: List<Event?>)
+    fun emptyNewestEvent()
+    fun emptyGuest()
+    fun emptyMostAttended()
 }

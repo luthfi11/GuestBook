@@ -7,4 +7,7 @@ interface ExportView {
     fun hideLoading()
     fun showEventList(eventId: List<Int?>, eventName: List<String?>)
     fun showGuestList(guest: List<Guest?>)
+    fun successExport(path: String)
+    fun emptyListAler()
+    fun showEmptyList()
 }

@@ -45,6 +45,9 @@
     <string name="edit_guest">Ubah Tamu</string>
     <string name="guest_updated">Tamu Diperbarui</string>
     <string name="event_updated">Acara Diperbarui</string>
+    <string name="exporting">Mengekspor</string>
+    <string name="fail_export_msg">Eksport data gagal, Data tidak ditemukan !</string>
+    <string name="permission_denied">Gagal mengekspor data, Izin ditolak.</string>
 
     <array name="example">
         <item>Example</item>

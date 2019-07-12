@@ -45,6 +45,9 @@
     <string name="edit_guest">Edit Guest</string>
     <string name="guest_updated">Guest Updated</string>
     <string name="event_updated">Event Updated</string>
+    <string name="exporting">Exporting</string>
+    <string name="fail_export_msg">Export data failed, Data not found !</string>
+    <string name="permission_denied">Fail to export data, Permission denied.</string>
 
     <array name="example">
         <item>Example</item>
