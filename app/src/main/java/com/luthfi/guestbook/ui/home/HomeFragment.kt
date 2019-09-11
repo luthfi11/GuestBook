@@ -81,9 +81,8 @@ class HomeFragment : Fragment(), HomeView {
         setRecycler()
         onAction()
         presenter = HomePresenter(this, context)
-        presenter.getLatestEvent()
-        presenter.getGuestData(id)
-        presenter.getMostAttended()
+
+        loadData()
     }
 
     private fun setRecycler() {
@@ -98,8 +97,14 @@ class HomeFragment : Fragment(), HomeView {
         rvMostAttended.adapter = eventAdapter
     }
 
+    private fun loadData() {
+        presenter.getLatestEvent()
+        presenter.getGuestData(id)
+        presenter.getMostAttended()
+    }
+
     private fun onAction() {
-        srlHome.onRefresh { presenter.getGuestData(id) }
+        srlHome.onRefresh { loadData() }
         btnSeeAll.onClick { startActivity<EventDetailActivity>("eventId" to id) }
     }
 }
